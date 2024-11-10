@@ -3,17 +3,20 @@ os: linux
 artifacts:
   files:
     - appspec.yml
-    - source: /Users/Guruu/Desktop/AWS-Projectsv2/Project6_CI-CD
-    destination: /home/ec2-user/nginx-web-server
-    hooks:
-    BeforeInstall:
-    - location: scripts/install_dependencies.sh
-    timeout: 300
-    runas: root
-    - location: scripts/start_server.sh
-    timeout: 300
-    runas: root
-    ApplicationStop:
-    - location: scripts/stop_server.sh
-    timeout: 300
-    runas: root
+    - scripts/install_dependencies.sh
+    - scripts/start_server.sh
+    - scripts/stop_server.sh
+  - source: /
+  destination: /home/ec2-user/nginx-web-server
+  hooks:
+  BeforeInstall:
+  - location: scripts/install_dependencies.sh
+  timeout: 300
+  runas: root
+  - location: scripts/start_server.sh
+  timeout: 300
+  runas: root
+  ApplicationStop:
+  - location: scripts/stop_server.sh
+  timeout: 300
+  runas: root
