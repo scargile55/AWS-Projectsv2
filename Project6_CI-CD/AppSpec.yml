@@ -3,20 +3,21 @@ os: linux
 artifacts:
   files:
     - appspec.yml
-    - scripts/install_dependencies.sh
-    - scripts/start_server.sh
-    - scripts/stop_server.sh
-  - source: /
-  destination: /home/ec2-user/nginx-web-server
-  hooks:
-  BeforeInstall:
-  - location: scripts/install_dependencies.sh
-  timeout: 300
-  runas: root
-  - location: scripts/start_server.sh
-  timeout: 300
-  runas: root
-  ApplicationStop:
-  - location: scripts/stop_server.sh
-  timeout: 300
-  runas: root
+    - install_dependencies.sh
+    - start_server.sh
+    - stop_server.sh
+files:
+- source: /
+destination: /usr/share/nginx/html/
+hooks:
+BeforeInstall:
+- location: scripts/install_dependencies
+timeout: 300
+runas: root
+- location: scripts/start_server
+timeout: 300
+runas: root
+ApplicationStop:
+- location: scripts/stop_server
+timeout: 300
+runas: root
