@@ -1,6 +1,7 @@
 version: 0.0
 os: linux
 files:
+- AppSpec.yml
 - source: /Users/Guruu/Desktop/AWS-Projectsv2/Project6_CI-CD
 destination: /home/ec2-user/nginx-web-server
 hooks:
