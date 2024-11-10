@@ -1,6 +1,8 @@
 version: 0.0
 os: linux
-files:
+artifacts:
+  files:
+    - /Users/Guruu/Desktop/AWS-Projectsv2/Project6_CI-CD/AppSpec.yml
 - source: /
 destination: /usr/share/nginx/html/
 hooks:
